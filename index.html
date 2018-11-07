@@ -12,21 +12,23 @@
 
 <body>
 
-	<input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
+	Insert video url: 
+	<input id="text" type="text" value="http://youtube.com" style="width:80%" /><br />
 	<div id="qrcode" style="width:200px; height:200px; margin:15px;"></div>
-
-	<button id="btnDownload"> Download PDF </button>
-
-<!-- 	<script type="text/javascript">
-
-	</script> -->
-<!-- 	<form method="post" enctype="multipart/form-data">
-        <input type="file" name="files[]" multiple>
-        <input type="submit" value="Upload File" name="submit">
-    </form> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 
+	 Choose image file:
+	<form class="input-group" id="img2b64">
+    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+	</form>
+	<canvas id="canvas" width="0" height="0">
+		<img id="scene" src="#" alt="your image" />
+	</canvas>
+	Create pdf:
+  <div id="space">
+  	<button id="btnDownload"> Download PDF </button>
+	</div>
 	<script src="upload.js"></script>
 	
 
