@@ -4,35 +4,35 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {
     width : 200,
     height : 200
-  });
+});
 
-  function makeCode () {    
-    var elText = document.getElementById("text");
-    
-    if (!elText.value) {
-      alert("Input a text");
-      elText.focus();
-      return;
-    }
-    
-    qrcode.makeCode(elText.value);
+function makeCode () {    
+  var elText = document.getElementById("text");
+  
+  if (!elText.value) {
+    alert("Input a text");
+    elText.focus();
+    return;
   }
+  
+  qrcode.makeCode(elText.value);
+}
 
-  makeCode();
+makeCode();
 
-  $("#text").
-    on("blur", function () {
+$("#text").
+  on("blur", function () {
+    makeCode();
+  }).
+  on("keydown", function (e) {
+    if (e.keyCode == 13) {
       makeCode();
-    }).
-    on("keydown", function (e) {
-      if (e.keyCode == 13) {
-        makeCode();
-      }
-    });
+    }
+  });
 
 button = document.getElementById('btnDownload');
 // scene = document.getElementById('scene');
-var scene;
+var imageUpload = false;
 
 function generatePDF(){
 
@@ -42,10 +42,14 @@ function generatePDF(){
 
   var doc = new jsPDF('l');
 
-  if (scene) {
-    // console.log(sceneData);
+  if (imageUpload) {
+    image = document.getElementById('scene');
+    var myCanvas = convertImageToCanvas(image);
+    var scene = myCanvas.toDataURL("image/jpeg");
+
     doc.addImage(scene, 'JPEG', 15, 15, 265, 150);
     doc.addPage();
+
   }
 
   doc.addImage(imgData, 'JPEG', 20, 20, 50, 50);
@@ -58,11 +62,8 @@ function encodeImageFileAsURL(cb) {
         var file = this.files[0];
         var reader = new FileReader();
         reader.onloadend = function() {
-            cb(reader.result);
-            image = document.getElementById("scene");
-            image.src = reader.result;
-            var myCanvas = convertImageToCanvas(image);
-            scene = myCanvas.toDataURL("image/jpeg");
+          imageUpload = true;
+          cb(reader.result);
         }
         reader.readAsDataURL(file);
     }
@@ -80,8 +81,7 @@ function convertImageToCanvas(image) {
 
 $('#inputFileToLoad').change(encodeImageFileAsURL(function(base64Img) {
   $('#scene')
-    .find('img')
-      .attr('src', base64Img);
+    .attr('src', base64Img);
 }));
 
 button.addEventListener('click', generatePDF);
