@@ -12,22 +12,49 @@
 
 <body>
 
-	Insert video url: 
-	<input id="text" type="text" value="http://youtube.com" style="width:80%" /><br />
-	<div id="qrcode" style="width:200px; height:200px; margin:15px;"></div>
+<!-- 	<header class="w3-container w3-center w3-padding-32"> 
+	  <h1><b>Zach's Art Book</b></h1>
+	</header> -->
+	<div>
+		<img src="img/Create.jpeg" alt="Title Let's Create" width="100%">
+	</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+	<div style="padding-left:20px">
+		<header class="w3-container w3-center w3-padding-32"> 
+		  <h1>
+		  	<div style="padding-top: 5px">
+		  		<b>Insert video link:</b>
+		  	</div>
+		  <input id="text" type="text" value="http://youtube.com" style="width:60%; height:25px; font-size:20px" /><br />
+		  </h1>
+		</header>
 
-	 Choose image file:
-	<form class="input-group" id="img2b64">
-    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
-	</form>
-	<canvas id="canvas" width="0" height="0">
-		<img id="scene" src="#" alt="your image" />
-	</canvas>
-	Create pdf:
-  <div id="space">
-  	<button id="btnDownload"> Download PDF </button>
+		
+		<div id="qrcode" style="width:200px; height:200px; margin:15px;"></div>
+
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+
+		<header class="w3-container w3-center w3-padding-32"> 
+		  <h1>
+		  	<div style="padding-bottom:5px">
+		  		<b>Choose image file: </b>
+		  	</div>
+		    <form class="input-group" id="img2b64" style="font-size:20px">
+		    <input id="inputFileToLoad" type="file" style="font-size:20px" onchange="encodeImageFileAsURL();" />
+		    </form>
+		  </h1>
+		</header>
+		
+		<header class="w3-container w3-center w3-padding-32"> 
+		  <h1><b>Create pdf: </b>
+		    <div id="space">
+			  	<button id="btnDownload" style="font-size:20px; background-color: #00FF00"> Download PDF </button>
+				</div>
+		  </h1>
+		</header> 
+		<canvas id="canvas" width="0" height="0">
+			<img id="scene" src="#" alt="your image" />
+		</canvas>
 	</div>
 	<script src="upload.js"></script>
 	

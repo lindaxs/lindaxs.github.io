@@ -1,6 +1,7 @@
 // https://codepen.io/ianaya89/pen/JoRNyK/
 // https://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename
 
+// Create QR code. 
 var qrcode = new QRCode(document.getElementById("qrcode"), {
     width : 200,
     height : 200
@@ -31,7 +32,6 @@ $("#text").
   });
 
 button = document.getElementById('btnDownload');
-// scene = document.getElementById('scene');
 var imageUpload = false;
 
 function generatePDF(){
